@@ -1,6 +1,6 @@
 import countriesJson from "../countries.json";
 
-const Selector = ({setCountry, getCountryData}) => {
+const Selector = ({setCountry}) => {
   return (
     <div className="selector-container">
       <select onChange={(e) => setCountry(e.target.value)}>
@@ -10,7 +10,6 @@ const Selector = ({setCountry, getCountryData}) => {
           )
         }
       </select>
-      <button onClick={getCountryData}>GET DATA</button>
     </div>
   )
 }

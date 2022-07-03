@@ -3,7 +3,7 @@ import Results from "../components/Results";
 import Selector from "../components/Selector";
 import Title from "../components/Title";
 
-const TopPage = ({setCountry, getCountryData, countryData, loading}) => {
+const TopPage = ({setCountry, countryData, loading}) => {
   return (
     <div className="top-page-container">
       <div>
@@ -11,7 +11,6 @@ const TopPage = ({setCountry, getCountryData, countryData, loading}) => {
         <Title />
         <Selector
           setCountry={setCountry}
-          getCountryData={getCountryData}
         />
         <Results
           countryData={countryData}

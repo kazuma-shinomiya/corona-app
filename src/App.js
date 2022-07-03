@@ -14,8 +14,10 @@ function App() {
     totalRecovered: "",
   });
   const [allCountriesData, setAllCountriesData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getCountryData = () => {
+    setLoading(true);
     fetch(`https://api.covid19api.com/country/${country}`)
       .then(res => res.json())
       .then(data => {
@@ -28,14 +30,19 @@ function App() {
           newRecovered: todayData.Recovered - yesterdayData.Recovered,
           totalRecovered: todayData.Recovered,
         });
+        setLoading(false);
       })
       .catch(error => alert("エラーが発生しました"))
   }
 
   useEffect(() => {
+    setLoading(true);
     fetch("https://api.covid19api.com/summary")
       .then(res => res.json())
-      .then(data => setAllCountriesData(data.Countries))
+      .then(data => {
+        setAllCountriesData(data.Countries);
+        setLoading(false);
+      })
       .catch(error => alert("エラーが発生しました"))
   }, []);
   return (
@@ -47,12 +54,14 @@ function App() {
             setCountry={setCountry}
             countryData={countryData}
             getCountryData={getCountryData}
+            loading={loading}
           />}>
         </Route>
         <Route 
           path="/world" 
           element={<WorldPage
             allCountriesData={allCountriesData}
+            loading={loading}
           />}>
         </Route>
       </Routes>

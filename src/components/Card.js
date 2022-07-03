@@ -1,7 +1,12 @@
-const Card = ({allCountriesData}) => {
+import Loading from "./Loading"
+
+const Card = ({allCountriesData, loading}) => {
   return (
     <div className="card-container">
       {
+        loading ?
+        <Loading />
+        :
         allCountriesData.map((countryData, index) =>
             <div key={index}>
               <h2>{countryData.Country}</h2>

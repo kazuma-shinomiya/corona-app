@@ -29,12 +29,14 @@ function App() {
           totalRecovered: todayData.Recovered,
         });
       })
+      .catch(error => alert("エラーが発生しました"))
   }
 
   useEffect(() => {
     fetch("https://api.covid19api.com/summary")
       .then(res => res.json())
       .then(data => setAllCountriesData(data.Countries))
+      .catch(error => alert("エラーが発生しました"))
   }, []);
   return (
     <BrowserRouter>

@@ -1,6 +1,7 @@
 import Loading from "./Loading"
+import { CardType } from "../types"
 
-const Card = ({allCountriesData, loading}) => {
+const Card = ({allCountriesData, loading}: CardType) => {
   return (
     <div className="card-container">
       {

@@ -3,18 +3,23 @@ import { useEffect, useState } from 'react';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import TopPage from './pages/TopPage';
 import WorldPage from './pages/WorldPage';
+import { CountryDataType, AllCountriesDataType} from './types';
 
 function App() {
-  const [country, setCountry] = useState("japan");
-  const [countryData, setCountryData] = useState({
+  const [country, setCountry] = useState<string>("japan");
+  const [countryData, setCountryData] = useState<CountryDataType>({
     date: "",
-    newConfirmed: "",
-    totalConfirmed: "",
-    newRecovered: "",
-    totalRecovered: "",
+    newConfirmed: 0,
+    totalConfirmed: 0,
+    newRecovered: 0,
+    totalRecovered: 0,
   });
-  const [allCountriesData, setAllCountriesData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [allCountriesData, setAllCountriesData] = useState<AllCountriesDataType>([{
+    Country: "",
+    NewConfirmed: 0,
+    TotalConfirmed: 0,
+  }]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getCountryData = () => {

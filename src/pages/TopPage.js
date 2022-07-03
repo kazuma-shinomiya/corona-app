@@ -3,18 +3,18 @@ import Results from "../components/Results";
 import Selector from "../components/Selector";
 import Title from "../components/Title";
 
-const TopPage = (props) => {
+const TopPage = ({setCountry, getCountryData, countryData}) => {
   return (
     <div className="top-page-container">
       <div>
         <Header />
         <Title />
         <Selector
-          setCountry={props.setCountry}
-          getCountryData={props.getCountryData}
+          setCountry={setCountry}
+          getCountryData={getCountryData}
         />
         <Results
-          countryData={props.countryData}
+          countryData={countryData}
         />
       </div>
     </div>
